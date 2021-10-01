@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h3 id="h1">Double-click me for MDN Element Events</h3>
+		<input id="inp-1" onBlur="blurred()" placeholder="blur" />
+		<input id="inp-2" onFocus="focused()" placeholder="focused" />
+		<input id="inp-3" placeholder="mouseleave Event Listener" />
+		<button id="btn-1">Btn 1 - remove h1 event lister</button>
+		<button id="btn-2">Btn 2</button>
+		<script>
+			function focused() {
+				var e = document.getElementById("inp-2")
+				if (confirm("Got it?")) {
+					e.blur()
+				}
+			}
+			function blurred() {
+				alert("blur test")
+			}
+			const h1 = document.getElementById("h1")
+			h1.addEventListener("dblclick", h1DoubleClick)
+			//document.getElementById("h1").addEventListener("dblclick", h1DoubleClick)
+			function h1DoubleClick() {
+				window.open("https://developer.mozilla.org/en-US/docs/Web/API/Element", "_blank").focus()
+			}
+
+			const b1 = document.getElementById("btn-1")
+			console.log(b1)
+			b1.addEventListener("click", HandleBtnOneClick)
+			function HandleBtnOneClick() {
+				h1.removeEventListener("dblclick", h1DoubleClick)
+				alert("removeEventListner test")
+			}
+
+			const i3 = document.getElementById("inp-3")
+			i3.addEventListener("mouseleave", handleInp3Change)
+			function handleInp3Change() {
+				alert("mouseleave event")
+			}
+		</script>
+		<!-- element event list: 
+            https://developer.mozilla.org/en-US/docs/Web/API/Element -->
+	</body>
+</html>

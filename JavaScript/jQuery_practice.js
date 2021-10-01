@@ -1,0 +1,4 @@
+main;
+navigation;
+subcontents;
+footer;
