@@ -16,7 +16,7 @@
 		<script>
 			function focused() {
 				var e = document.getElementById("inp-2")
-				if (confirm("Got it?")) {
+				if (confirm("windows.confirm() in action")) {
 					e.blur()
 				}
 			}
@@ -36,6 +36,11 @@
 			function HandleBtnOneClick() {
 				h1.removeEventListener("dblclick", h1DoubleClick)
 				alert("removeEventListner test")
+			}
+
+			document.getElementById("btn-2").addEventListener("click", handleBtnTwoClick)
+			function handleBtnTwoClick() {
+				window.prompt("window.prompt() in action")
 			}
 
 			const i3 = document.getElementById("inp-3")
