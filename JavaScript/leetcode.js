@@ -33,16 +33,16 @@ var twoSum = function (nums, target) {
 
 let nums = [-1, 2, 5, 7, 11, 15]
 
-var twoSum = function (nums, target) {
-	let map = {}
-	for (let i = 0; i < nums.length; i++) {
-		let n = target - nums[i]
-		let find = map[n]
-		if (map[n] !== undefined) {
-			return [find, i]
-		}
-		map[nums[i]] = i
-	}
-}
+// var twoSum = function (nums, target) {
+// 	let map = {}
+// 	for (let i = 0; i < nums.length; i++) {
+// 		let n = target - nums[i]
+// 		let find = map[n]
+// 		if (map[n] !== undefined) {
+// 			return [find, i]
+// 		}
+// 		map[nums[i]] = i
+// 	}
+// }
 
 twoSum(nums, 14)
