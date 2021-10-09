@@ -12,6 +12,8 @@ function Form() {
 	const [pwError, setPwError] = useState("")
 	const [confirmPwError, setConfirmPwError] = useState("")
 
+	//an alternative solution is not using state for error messages and instead using existing hooks (firstName, email, pw, etc.)
+	//directly in the return value. Change will be tracked by utilizing these hooks.
 	function handleFirstName(val) {
 		setFirstName(val)
 		setFnError(val.length < 2 ? "First Name must be at least 2 characters" : "")
