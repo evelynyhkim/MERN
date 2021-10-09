@@ -1,7 +1,6 @@
 import "./App.css"
-import Person from "./components/Person"
+//import Person from "./components/Person"
 import Form from "./components/Form"
-import UserForm from "./components/UserForm"
 
 function App() {
 	/*var people = [
@@ -13,7 +12,7 @@ function App() {
 
 	return (
 		<div class="App">
-			<UserForm />
+			<Form />
 		</div>
 	)
 }

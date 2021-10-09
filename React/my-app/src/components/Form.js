@@ -6,13 +6,20 @@ function Form() {
 	const [email, setEmail] = useState("")
 	const [pw, setPw] = useState("")
 	const [confirmPw, setConfirmPw] = useState("")
+	const [fnError, setFnError] = useState("")
+
+	function handleFirstName(val) {
+		setFirstName(val)
+		setFnError(val.length < 2 ? "First Name must be at least 2 characters" : "")
+	}
 
 	return (
 		<>
 			<form>
 				<div class="form-line">
 					<label for="firstName">First Name</label>
-					<input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+					{!fnError && <p>{fnError}</p>}
+					<input type="text" id="firstName" value={firstName} onChange={(e) => handleFirstName(e.target.value)} />
 				</div>
 				<div class="form-line">
 					<label for="lastName">Last Name</label>
