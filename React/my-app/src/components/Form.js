@@ -29,7 +29,7 @@ function Form() {
 				if (payload.length < 2) err = "lastName too short"
 				break
 			case "email":
-				if (payload.length < 2) err = "email too short"
+				if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(payload)) err = "invalid email"
 				break
 			default:
 				break
@@ -47,17 +47,17 @@ function Form() {
 				<div>
 					<label htmlFor="firstName">First Name</label>
 					<input type="text" id="firstName" value={state.firstName.value} onChange={handleChange} />
-					{state.firstName.error !== null && <p>{state.firstName.error}</p>}
+					{state.firstName.error !== null && <p className="error">{state.firstName.error}</p>}
 				</div>
 				<div>
 					<label htmlFor="lastName">Last Name</label>
 					<input type="text" id="lastName" value={state.lastName.value} onChange={handleChange} />
-					{state.lastName.error !== null && <p>{state.lastName.error}</p>}
+					{state.lastName.error !== null && <p className="error">{state.lastName.error}</p>}
 				</div>
 				<div>
 					<label htmlFor="email">Email</label>
 					<input type="text" id="email" value={state.email.value} onChange={handleChange} />
-					{state.email.error !== null && <p>{state.email.error}</p>}
+					{state.email.error !== null && <p className="error">{state.email.error}</p>}
 				</div>
 			</form>
 		</>
