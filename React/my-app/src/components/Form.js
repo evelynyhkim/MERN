@@ -1,75 +1,64 @@
-import React, {useState} from "react"
+import React, {useReducer} from "react"
 
 function Form() {
-	const [firstName, setFirstName] = useState("")
-	const [lastName, setLastName] = useState("")
-	const [email, setEmail] = useState("")
-	const [pw, setPw] = useState("")
-	const [confirmPw, setConfirmPw] = useState("")
-	const [fnError, setFnError] = useState("First Name must be at least 2 characters")
-	const [lnError, setLnError] = useState("Last Name must be at least 2 characters")
-	const [emailError, setEmailError] = useState("EMail must be at least 2 characters")
-	const [pwError, setPwError] = useState("")
-	const [confirmPwError, setConfirmPwError] = useState("")
-
-	//an alternative solution is not using state for error messages and instead using existing hooks (firstName, email, pw, etc.)
-	//directly in the return value. Change will be tracked by utilizing these hooks.
-	function handleFirstName(val) {
-		setFirstName(val)
-		setFnError(val.length < 2 ? "First Name must be at least 2 characters" : "")
+	const initialState = {
+		firstName: {
+			value: "",
+			error: null,
+		},
+		lastName: {
+			value: "",
+			error: null,
+		},
+		email: {
+			value: "",
+			error: null,
+		},
 	}
 
-	function handleLastName(val) {
-		setLastName(val)
-		setLnError(val.length < 2 ? "Last Name must be at least 2 characters" : "")
-	}
+	const [state, dispatch] = useReducer(reducer, initialState)
 
-	function handleEmail(val) {
-		setEmail(val)
-		setEmailError(val.length < 5 ? "Email must be at least 5 characters" : "")
+	function reducer(state, action) {
+		const {id, payload} = action
+		let err = ""
+		switch (id) {
+			case "firstName":
+				if (payload.length < 2) err = "firstName too short"
+				break
+			case "lastName":
+				if (payload.length < 2) err = "lastName too short"
+				break
+			case "email":
+				if (payload.length < 2) err = "email too short"
+				break
+			default:
+				break
+		}
+		return {...state, [id]: {value: payload, error: err}}
 	}
-
-	function handlePw(val) {
-		setPw(val)
-		setPwError(val.length < 8 ? "Password must be at least 8 characters" : "")
-	}
-
-	function handleConfirmPw(val) {
-		setConfirmPw(val)
-		var msg = ""
-		msg += val.length < 8 ? "Email must be at least 8 characters. " : ""
-		msg += val != pw ? "Passwords must match. " : ""
-		setConfirmPwError(msg)
+	function handleChange(e) {
+		const {id, value} = e.target
+		dispatch({id: id, payload: value})
 	}
 
 	return (
 		<>
 			<form>
-				<div class="form-line">
-					<label for="firstName">First Name</label>
-					<input type="text" id="firstName" value={firstName} onChange={(e) => handleFirstName(e.target.value)} />
+				<div>
+					<label htmlFor="firstName">First Name</label>
+					<input type="text" id="firstName" value={state.firstName.value} onChange={handleChange} />
+					{state.firstName.error !== null && <p>{state.firstName.error}</p>}
 				</div>
-				{fnError && <p>{fnError}</p>}
-				<div class="form-line">
-					<label for="lastName">Last Name</label>
-					<input type="text" id="lastName" value={lastName} onChange={(e) => handleLastName(e.target.value)} />
+				<div>
+					<label htmlFor="lastName">Last Name</label>
+					<input type="text" id="lastName" value={state.lastName.value} onChange={handleChange} />
+					{state.lastName.error !== null && <p>{state.lastName.error}</p>}
 				</div>
-				{lnError && <p>{lnError}</p>}
-				<div class="form-line">
-					<label for="email">Email</label>
-					<input type="text" id="email" value={email} onChange={(e) => handleEmail(e.target.value)} />
+				<div>
+					<label htmlFor="email">Email</label>
+					<input type="text" id="email" value={state.email.value} onChange={handleChange} />
+					{state.email.error !== null && <p>{state.email.error}</p>}
 				</div>
-				{emailError && <p>{emailError}</p>}
-				<div class="form-line">
-					<label for="pw">Password</label>
-					<input type="text" id="pw" value={pw} onChange={(e) => handlePw(e.target.value)} />
-				</div>
-				{pwError && <p>{pwError}</p>}
-				<div class="form-line">
-					<label for="confirmPw">Confirm Password</label>
-					<input type="text" id="confirmPw" value={confirmPw} onChange={(e) => handleConfirmPw(e.target.value)} />
-				</div>
-				{confirmPwError && <p>{confirmPwError}</p>}
 			</form>
 		</>
 	)
