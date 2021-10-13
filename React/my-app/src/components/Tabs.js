@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-function Tabs({tabs}) {
+function Tabs({tabs, setTabs}) {
 	const tabStyle = {
 		width: "150px",
 		height: "50px",
@@ -16,17 +16,19 @@ function Tabs({tabs}) {
 		height: "150px",
 		border: "black 1px solid",
 		padding: "10px",
+		fontSize: "1.2em",
 	}
 
-	const [currentTab, setCurrentTab] = useState({label: "Initial tab", content: "Initial content"})
-	async function handleTabClick(e, tab) {
-		//console.log(tab.label, tab.content)
-		console.log(tab.label)
-		const obj = {label: tab.label, content: tab.content}
-		await setCurrentTab(obj)
-		//e.target.style.color = "red"
-		await console.log(currentTab)
-		document.getElementsByName(currentTab.label)
+	const [currentTab, setCurrentTab] = useState({label: "", content: ""})
+	function handleTabClick(e, tab) {
+		setCurrentTab(tab)
+		e.target.style.color = "white"
+		e.target.style.backgroundColor = "black"
+		//console.log(currentTab.label)
+		if (currentTab.label) {
+			document.getElementsByName(currentTab.label)[0].style.color = "black"
+			document.getElementsByName(currentTab.label)[0].style.backgroundColor = "white"
+		}
 	}
 	return (
 		<>
