@@ -1,18 +1,19 @@
 import "./App.css"
-//import Person from "./components/Person"
-import Form from "./components/Form"
+import React, {useState} from "react"
+import DisplayBoxes from "./components/DisplayBoxes"
+import BoxForm from "./components/BoxForm"
 
 function App() {
-	/*var people = [
-		{lastName: "Doe", firstName: "Jane", age: 45, hairColor: "Black"},
-		{lastName: "Smith", firstName: "John", age: 88, hairColor: "Brown"},
-		// {lastName: "Fillmore", firstName: "Millard", age: 50, hairColor: "Brown"},
-		// {lastName: "Smith", firstName: "Maria", age: 62, hairColor: "Brown"},
-	]*/
+	const [boxes, setBoxes] = useState([])
+
+	function handleBoxSubmit(arr) {
+		setBoxes(arr)
+	}
 
 	return (
-		<div class="App">
-			<Form />
+		<div className="App">
+			<BoxForm boxes={boxes} handleSubmit={handleBoxSubmit} />
+			<DisplayBoxes boxes={boxes} />
 		</div>
 	)
 }
