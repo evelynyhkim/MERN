@@ -1,21 +1,26 @@
 import "./App.css"
 import React, {useState} from "react"
-import DisplayBoxes from "./components/DisplayBoxes"
-import BoxForm from "./components/BoxForm"
+import ItemList from "./components/ItemList"
+//import ItemForm from "./components/ItemForm"
 
 function App() {
-	const [boxes, setBoxes] = useState([])
+	const initialItems = [
+		{txt: "item 1", isDone: false},
+		{txt: "item 2", isDone: true},
+	]
 
-	function handleBoxSubmit(arr) {
-		setBoxes(arr)
+	const [itemList, setItemList] = useState(initialItems)
+	//const [newItem, setNewItem] = useState({})
+
+	function handleItemSubmit() {
+		//setItemList()
 	}
 
 	return (
 		<div className="App">
-			<BoxForm boxes={boxes} handleSubmit={handleBoxSubmit} />
-			<DisplayBoxes boxes={boxes} />
+			<ItemList itemList={itemList} setItemList={setItemList} />
 		</div>
-	)
+	) //<ItemForm itemList={itemList} handleItemAdd={handleItemSubmit} />
 }
 
 export default App
