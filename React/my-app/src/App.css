@@ -10,6 +10,14 @@
 	margin-top: 10px;
 }
 
+.done {
+	color: blue;
+	font-size: 2em;
+}
+.notDone {
+	color: pink;
+	font-size: 2em;
+}
 .App {
 	text-align: left;
 	margin-left: 30px;

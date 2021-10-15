@@ -1,27 +1,25 @@
 import React, {useState} from "react"
+import "../App.css"
+import styles from "./ItemList.module.css"
 
-function ItemList({itemList, setItemList}) {
-	const handleDoneToggle = (e, idxToUpdate) => {
-		const newList = itemList.map((item, idx) => {
-			//console.log(item)
-			if (idx == idxToUpdate) item.isDone = !item.isDone
-			return item
-		})
-		//onsole.log(newList)
-		setItemList(newList)
-	}
+function ItemList({itemList, setItemList, handleDoneToggle}) {
 	const selectedStyle = (isDone) => {
-		isDone ? "done" : "notDone"
+		const r = isDone ? "done" : "notDone"
+		console.log("return value is " + r)
+		return r
 	}
 
 	return (
 		<>
 			{itemList.map((item, idx) => {
 				//let bln = false
+				let c = selectedStyle(item.isDone)
+				console.log("class will be " + c)
+				c = "styles." + c
 				return (
-					<div key={idx} className="item {()=>selectedStyle(item.isDone)}">
+					<div key={idx} className={c}>
 						<label htmlFor={idx}>{item.txt}</label>
-						<input id={idx} type="checkbox" checked={item.isDone} onClick={(e) => handleDoneToggle(e, idx)} />
+						<input id={idx} type="checkbox" checked={item.isDone} onChange={(e) => handleDoneToggle(e, idx)} />
 					</div>
 				)
 			})}

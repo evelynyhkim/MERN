@@ -1,0 +1,8 @@
+.done {
+	color: red;
+	font-size: 5em;
+}
+.notDone {
+	color: black;
+	font-size: 5em;
+}
