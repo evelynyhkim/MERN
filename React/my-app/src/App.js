@@ -19,7 +19,9 @@ function App() {
 	}
 
 	function chooseStyle(val) {
-		return val ? "done" : "notDone"
+		//return val ? "done" : "notDone"
+		if (val === true) return "done"
+		else return "notDone"
 	}
 
 	function handleDoneToggle(e, idxToToggle) {
@@ -49,9 +51,9 @@ function App() {
 			</form>
 			{itemList.map((item, idx) => {
 				//let bln = false
-				//let c = selectedStyle(item.isDone)
+				let s = chooseStyle(item.isDone)
 				return (
-					<div key={idx} className={() => chooseStyle(item.isDone)}>
+					<div key={idx} className={s}>
 						<label htmlFor={idx}>
 							{item.txt} {item.isDone ? "done" : "notDone"}
 						</label>
