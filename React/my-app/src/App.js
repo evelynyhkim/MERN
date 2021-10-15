@@ -20,7 +20,10 @@ function App() {
 		//setNewItem({})
 	}
 
-	/* git test */
+	function chooseStyle(val) {
+		return val ? "done" : "notDone"
+	}
+
 	return (
 		<>
 			<form onSubmit={handleItemSubmit}>
@@ -31,7 +34,7 @@ function App() {
 				//let bln = false
 				//let c = selectedStyle(item.isDone)
 				return (
-					<div key={idx} className="done">
+					<div key={idx} className={() => chooseStyle(item.isDone)}>
 						<label htmlFor={idx}>{item.txt}</label>
 						<input id={idx} type="checkbox" checked={item.isDone} />
 					</div>
