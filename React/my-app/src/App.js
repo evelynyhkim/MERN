@@ -24,6 +24,18 @@ function App() {
 		return val ? "done" : "notDone"
 	}
 
+	function handleDoneToggle(e, idxToToggle) {
+		let newList = itemList.map((item, idx) => {
+			if (idx !== idxToToggle) {
+				return item
+			} else {
+				let itm = {txt: item.txt, isDone: !item.isDone}
+				return itm
+			}
+		})
+		setItemList(newList)
+	}
+
 	return (
 		<>
 			<form onSubmit={handleItemSubmit}>
@@ -35,8 +47,10 @@ function App() {
 				//let c = selectedStyle(item.isDone)
 				return (
 					<div key={idx} className={() => chooseStyle(item.isDone)}>
-						<label htmlFor={idx}>{item.txt}</label>
-						<input id={idx} type="checkbox" checked={item.isDone} />
+						<label htmlFor={idx}>
+							{item.txt} {item.isDone ? "done" : "notDone"}
+						</label>
+						<input checked={item.isDone} onChange={(e) => handleDoneToggle(e, idx)} id={idx} type="checkbox" />
 					</div>
 				)
 			})}
