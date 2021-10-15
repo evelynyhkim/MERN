@@ -1,6 +1,6 @@
 import React from "react"
 
-function ItemForm({newItem, setNewItem, itemList, setItemList, handleItemSubmit}) {
+function ItemForm({newItem, setNewItem, itemList, setItemList}) {
 	function handleItemSubmit(e) {
 		e.preventDefault()
 		setItemList([...itemList, newItem])
