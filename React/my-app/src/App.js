@@ -1,7 +1,7 @@
 import "./App.css"
 import React, {useState} from "react"
 //import ItemList from "./components/ItemList"
-//import ItemForm from "./components/ItemForm"
+import ItemForm from "./components/ItemForm"
 
 function App() {
 	const initialItems = [
@@ -11,12 +11,6 @@ function App() {
 
 	const [itemList, setItemList] = useState(initialItems)
 	const [newItem, setNewItem] = useState({})
-
-	function handleItemSubmit(e) {
-		e.preventDefault()
-		setItemList([...itemList, newItem])
-		setNewItem({txt: "", isDone: false})
-	}
 
 	function chooseStyle(val) {
 		//return val ? "done" : "notDone"
@@ -45,10 +39,11 @@ function App() {
 	}
 	return (
 		<>
-			<form onSubmit={handleItemSubmit}>
+			<ItemForm newItem={newItem} setNewItem={setNewItem} itemList={itemList} setItemList={setItemList} />
+			{/* <form onSubmit={handleItemSubmit}>
 				<input value={newItem.txt} onChange={(e) => setNewItem({txt: e.target.value, isDone: false})} type="text" />
 				<input type="submit" value="Add" />
-			</form>
+			</form> */}
 			{itemList.map((item, idx) => {
 				return (
 					<div key={idx} className={chooseStyle(item.isDone)}>
