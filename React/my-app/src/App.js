@@ -50,10 +50,8 @@ function App() {
 				<input type="submit" value="Add" />
 			</form>
 			{itemList.map((item, idx) => {
-				//let bln = false
-				let s = chooseStyle(item.isDone)
 				return (
-					<div key={idx} className={s}>
+					<div key={idx} className={chooseStyle(item.isDone)}>
 						<label htmlFor={idx}>
 							{item.txt} {item.isDone ? "done" : "notDone"}
 						</label>
