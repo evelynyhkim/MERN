@@ -8,7 +8,7 @@ function App() {
 		{txt: "item 1", isDone: false},
 		{txt: "item 2", isDone: true},
 	]
-	/* test test */
+
 	const [itemList, setItemList] = useState(initialItems)
 	const [newItem, setNewItem] = useState({})
 
@@ -35,7 +35,10 @@ function App() {
 		})
 		setItemList(newList)
 	}
-
+	const handleDeleteClick = (idxToDelete) => {
+		let newList = itemList.filter((item, idx) => idx !== idxToDelete)
+		setItemList(newList)
+	}
 	return (
 		<>
 			<form onSubmit={handleItemSubmit}>
@@ -51,6 +54,13 @@ function App() {
 							{item.txt} {item.isDone ? "done" : "notDone"}
 						</label>
 						<input checked={item.isDone} onChange={(e) => handleDoneToggle(e, idx)} id={idx} type="checkbox" />
+						<button
+							onClick={(e) => {
+								handleDeleteClick(idx)
+							}}
+						>
+							Delete
+						</button>
 					</div>
 				)
 			})}
