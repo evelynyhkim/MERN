@@ -14,10 +14,8 @@ function App() {
 
 	function handleItemSubmit(e) {
 		e.preventDefault()
-		//itemList.push(newItem)
-		setNewItem({txt: "", isDone: false})
 		setItemList([...itemList, newItem])
-		//setNewItem({})
+		setNewItem({txt: "", isDone: false})
 	}
 
 	function chooseStyle(val) {
@@ -29,8 +27,12 @@ function App() {
 			if (idx !== idxToToggle) {
 				return item
 			} else {
-				let itm = {txt: item.txt, isDone: !item.isDone}
-				return itm
+				//Here we're mutating the arrary, but it's okay
+				item.isDone = !item.isDone
+				return item
+
+				//let itm = {...item, isDone: !item.isDone}
+				//return itm
 			}
 		})
 		setItemList(newList)
@@ -42,7 +44,7 @@ function App() {
 	return (
 		<>
 			<form onSubmit={handleItemSubmit}>
-				<input onChange={(e) => setNewItem({txt: e.target.value, isDone: false})} type="text" />
+				<input value={newItem.txt} onChange={(e) => setNewItem({txt: e.target.value, isDone: false})} type="text" />
 				<input type="submit" value="Add" />
 			</form>
 			{itemList.map((item, idx) => {
@@ -55,7 +57,7 @@ function App() {
 						</label>
 						<input checked={item.isDone} onChange={(e) => handleDoneToggle(e, idx)} id={idx} type="checkbox" />
 						<button
-							onClick={(e) => {
+							onClick={() => {
 								handleDeleteClick(idx)
 							}}
 						>
