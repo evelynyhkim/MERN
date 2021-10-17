@@ -11,8 +11,10 @@ function ItemForm({newItem, setNewItem, itemList, setItemList}) {
 	}
 	function handleItemSubmit(e) {
 		e.preventDefault()
-		setItemList([...itemList, newItem])
-		setNewItem({txt: "", isDone: false})
+		if (/[^\s]/.test(newItem.txt)) {
+			setItemList([...itemList, newItem])
+			setNewItem({txt: "", isDone: false})
+		} else alert("Error - Todo text cannot be left empty")
 	}
 	return (
 		<form className="item-form" onSubmit={handleItemSubmit}>
