@@ -1,18 +1,16 @@
-App {
+.App {
 	text-align: left;
 	margin: 50px 50px;
 }
-/* .form-line {
-	width: 350px;
-	height: 30px;
-	border: black solid 1px;
-	border-radius: 5px;
-	display: flex;
-	justify-content: space-between;
-	padding: 5px 10px;
-	background-color: #eee;
-	margin-top: 10px;
-} */
+
+.item-form {
+	margin-bottom: 20px;
+}
+
+.item-form > * {
+	display: block;
+	margin-bottom: 10px;
+}
 
 .item-line > * {
 	margin-right: 10px;

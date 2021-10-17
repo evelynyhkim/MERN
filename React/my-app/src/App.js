@@ -38,7 +38,7 @@ function App() {
 		setItemList(newList)
 	}
 	return (
-		<>
+		<div className="App">
 			<ItemForm newItem={newItem} setNewItem={setNewItem} itemList={itemList} setItemList={setItemList} />
 			{/* <form onSubmit={handleItemSubmit}>
 				<input value={newItem.txt} onChange={(e) => setNewItem({txt: e.target.value, isDone: false})} type="text" />
@@ -47,11 +47,10 @@ function App() {
 			{itemList.map((item, idx) => {
 				return (
 					<div key={idx} className={`item-line ${chooseStyle(item.isDone)}`}>
-						<label htmlFor={idx}>
-							{item.txt} {item.isDone ? "done" : "notDone"}
-						</label>
+						<label htmlFor={idx}>{item.txt}</label>
 						<input checked={item.isDone} onChange={(e) => handleDoneToggle(e, idx)} id={idx} type="checkbox" />
 						<button
+							style={{backgroundColor: "black", color: "white", border: "none", borderRadius: "3px", padding: "3px 15px"}}
 							onClick={() => {
 								handleDeleteClick(idx)
 							}}
@@ -61,7 +60,7 @@ function App() {
 					</div>
 				)
 			})}
-		</>
+		</div>
 	) //() => selectedStyle(item.isDone)
 	// return (
 	// 	<div className="App">
