@@ -4,16 +4,18 @@
 	border: black 1px solid;
 	width: 700px;
 	margin: 0 auto;
+	padding: 10px;
 }
 .app * {
-	border: black 1px solid;
+	/* border: black 1px solid; */
 }
 .flex {
 	display: flex;
+	justify-content: flex-start;
 }
 .Header {
 	background-color: green;
-	margin: 10px 10px;
+	margin-bottom: 10px;
 }
 /* .Ads,
 .Header {
@@ -24,17 +26,21 @@
 	background-color: lightblue;
 }
 .Main {
-	flex: 3;
-	display: flex;
-	justify-content: space-evenly;
 	padding: 10px 10px;
+	flex: 3;
 	background-color: pink;
+}
+.SubContainer {
+	display: flex;
+	justify-content: space-between;
 }
 .Sub {
 	height: 50px;
 	background-color: yellow;
+	flex: 1;
+	margin: 0 10px;
 }
 .Ads {
 	background-color: violet;
-	margin: 10px 0;
+	margin: 10px 10px;
 }

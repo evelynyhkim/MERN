@@ -10,22 +10,12 @@ function App() {
 	return (
 		<div className="app">
 			        
-			<Header className="Header" />
+			<Header />
 			<div className="flex">
 				        
 				<Navigation className="Nav" />
 				        
-				<Main className="Main">
-					            
-					<SubContents className="Sub" />
-					            
-					<SubContents className="Sub" />
-					            
-					<SubContents className="Sub" />
-					            
-					<Advertisement className="Ads" />
-					        
-				</Main>
+				<Main className="Main">                     </Main>
 			</div>
 			    
 		</div>
