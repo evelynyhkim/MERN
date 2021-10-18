@@ -1,13 +1,18 @@
 .app {
 	text-align: left;
 	margin-left: 30px;
+	border: black 1px solid;
+	width: 700px;
+	margin: 0 auto;
+}
+.app * {
+	border: black 1px solid;
+}
+.flex {
+	display: flex;
 }
 .Header {
 	background-color: green;
-	margin: 10px 10px;
-}
-.Ads {
-	background-color: lightblue;
 	margin: 10px 10px;
 }
 /* .Ads,
@@ -16,13 +21,20 @@
 } */
 .Nav {
 	flex: 1;
+	background-color: lightblue;
 }
 .Main {
 	flex: 3;
 	display: flex;
 	justify-content: space-evenly;
 	padding: 10px 10px;
+	background-color: pink;
 }
 .Sub {
+	height: 50px;
 	background-color: yellow;
+}
+.Ads {
+	background-color: violet;
+	margin: 10px 0;
 }

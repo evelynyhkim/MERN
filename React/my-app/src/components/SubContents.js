@@ -1,5 +1,7 @@
 import React from "react"
 
-export default () => {
-	return <div>main</div>
+function SubContents() {
+	return <div className="Sub">sub</div>
 }
+
+export default SubContents

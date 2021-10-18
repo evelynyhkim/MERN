@@ -1,5 +1,6 @@
 import React from "react"
 
-export default () => {
-	return <div>main</div>
+function Navigation() {
+	return <div className="Nav">nav</div>
 }
+export default Navigation
