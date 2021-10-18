@@ -1,5 +1,7 @@
 import React from "react"
 
-export default () => {
+function Advertisement() {
 	return <div>main</div>
 }
+
+export default Advertisement
