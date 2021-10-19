@@ -13,7 +13,7 @@ function App() {
 			<Header />
 			<div className="flex">
 				        
-				<Navigation className="Nav" />
+				<Navigation/>
 				        
 				<Main className="Main">                     </Main>
 			</div>
