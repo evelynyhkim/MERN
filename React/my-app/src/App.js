@@ -1,30 +1,27 @@
 import "./App.css"
-import React, {useState} from "react"
-import DisplayBoxes from "./components/DisplayBoxes"
-import BoxForm from "./components/BoxForm"
-import Counter from "./components/Counter"
+import React, {useState, useEffect} from "react"
 
 function App() {
-	const [boxes, setBoxes] = useState([])
+	const [results, setResults] = useState([])
 
-	function handleBoxSubmit(arr) {
-		setBoxes(arr)
-	}
+	useEffect(
+		() =>
+			fetch("https://pokeapi.co/api/v2/pokemon/")
+				.then((res) => res.json())
+				.then((data) => {
+					setResults(data.results)
+					console.log(results[0])
+				})
+				.catch((err) => console.log(err)),
+		[]
+	)
 
 	return (
-		<div className="App">
-			<BoxForm boxes={boxes} handleSubmit={handleBoxSubmit} />
-			<DisplayBoxes boxes={boxes} />
-			<Counter
-				render={({increment, count}) => (
-					<>
-						<h2>Current Count is {count}</h2>
-						<button onClick={increment}>Add one</button>
-					</>
-				)}
-				initialVal={5}
-			/>
-		</div>
+		<ul className="App">
+			{results.map((item, i) => (
+				<li>{item.name}</li>
+			))}
+		</ul>
 	)
 }
 
