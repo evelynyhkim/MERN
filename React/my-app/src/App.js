@@ -1,16 +1,22 @@
 import "./App.css"
 import React, {useState, useEffect} from "react"
+import axios from "axios"
 
 function App() {
 	const [results, setResults] = useState([])
 
 	useEffect(
 		() =>
-			fetch("https://pokeapi.co/api/v2/pokemon/")
-				.then((res) => res.json())
-				.then((data) => {
-					setResults(data.results)
-					console.log(results[0])
+			axios
+				.get("https://pokeapi.co/api/v2/pokemon/")
+				// .then((res) => {
+				// 	console.log(res)
+				// 	//return res.json()
+				// 	return res
+				// })
+				.then((res) => {
+					setResults(res.data.results)
+					console.log(results)
 				})
 				.catch((err) => console.log(err)),
 		[]
