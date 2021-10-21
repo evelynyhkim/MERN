@@ -16,13 +16,7 @@ function App() {
 		[]
 	)
 
-	return (
-		<ul className="App">
-			{results.map((item, i) => (
-				<li>{item.name}</li>
-			))}
-		</ul>
-	)
+	return <ul className="App">{results && results.map((item, i) => <li>{item.name}</li>)}</ul>
 }
 
 export default App
