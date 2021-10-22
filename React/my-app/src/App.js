@@ -1,29 +1,20 @@
 import "./App.css"
-import React, {useState} from "react"
-import DisplayBoxes from "./components/DisplayBoxes"
-import BoxForm from "./components/BoxForm"
-import Counter from "./components/Counter"
+import React from "react"
+import {Router, Link, navigate} from "@reach/router"
+import Home from "./components/Home.js"
+import Num from "./components/Num.js"
+import Word from "./components/Wd.js"
+import Hello from "./components/Hello"
 
 function App() {
-	const [boxes, setBoxes] = useState([])
-
-	function handleBoxSubmit(arr) {
-		setBoxes(arr)
-	}
-
 	return (
 		<div className="App">
-			<BoxForm boxes={boxes} handleSubmit={handleBoxSubmit} />
-			<DisplayBoxes boxes={boxes} />
-			<Counter
-				render={({increment, count}) => (
-					<>
-						<h2>Current Count is {count}</h2>
-						<button onClick={increment}>Add one</button>
-					</>
-				)}
-				initialVal={5}
-			/>
+			<Router>
+				<Home path="/home" />
+				<Num path="/:num" />
+				<Wd path="/:wd" />
+				<Hello path="/hello/:col/:bgCol" />
+			</Router>
 		</div>
 	)
 }
