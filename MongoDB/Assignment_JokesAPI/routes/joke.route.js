@@ -6,4 +6,4 @@ module.exports = (app) => {
     app.get('/api/jokes/:_id', JokeController.getOneJoke),
     app.delete('/api/jokes/:_id', JokeController.deleteOneJoke),
     app.put('/api/jokes/:_id', JokeController.updateOneJoke)
-}
+} 
