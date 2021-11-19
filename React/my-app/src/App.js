@@ -1,5 +1,6 @@
 import "./App.css"
 import Person from "./components/Person"
+import PersonCard from "./components/PersonCard"
 
 function App() {
 	var people = [
@@ -11,10 +12,10 @@ function App() {
 
 	return (
 		<div class="App">
-			<Person lastName={people[0].lastName} firstName={people[0].firstName} age={people[0].age} hairColor={people[0].hairColor} />
-			<Person lastName={people[1].lastName} firstName={people[1].firstName} age={people[1].age} hairColor={people[1].hairColor} />
-			<Person lastName={people[2].lastName} firstName={people[2].firstName} age={people[2].age} hairColor={people[2].hairColor} />
-			<Person lastName={people[3].lastName} firstName={people[3].firstName} age={people[3].age} hairColor={people[3].hairColor} />
+			<PersonCard lastName={people[0].lastName} firstName={people[0].firstName} age={people[0].age} hairColor={people[0].hairColor} />
+			<PersonCard lastName={people[1].lastName} firstName={people[1].firstName} age={people[1].age} hairColor={people[1].hairColor} />
+			<PersonCard lastName={people[2].lastName} firstName={people[2].firstName} age={people[2].age} hairColor={people[2].hairColor} />
+			<PersonCard lastName={people[3].lastName} firstName={people[3].firstName} age={people[3].age} hairColor={people[3].hairColor} />
 		</div>
 	)
 }
